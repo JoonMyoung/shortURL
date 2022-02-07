@@ -11,12 +11,15 @@ import retrofit2.http.Query
 interface Service {
 
     companion object  {
-        const val ENDPOINT = "https://openapi.naver.com"
+        const val BASEURL = "https://openapi.naver.com"
     }
 
     @Headers("X-Naver-Client-Id: " + NaverConsts.CLIENT_ID,
             "X-Naver-Client-Secret: " + NaverConsts.CLIENT_SECRET)
 
     @GET("/v1/util/shorturl")
-    fun getShortUrl(@Query("url") url: String): Call<ShortUrlResult?>
+    fun getShortUrl(
+        @Query("url") url: String
+    ): Call<ShortUrlResult>
+
 }

@@ -3,6 +3,9 @@ package com.joonmyoung.shorturl
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.joonmyoung.shorturl.fragment.HomeFragment
 import com.joonmyoung.shorturl.fragment.ListFragment
@@ -10,7 +13,7 @@ import com.joonmyoung.shorturl.retrofit.DataManager
 
 class MainActivity : AppCompatActivity() {
 
-
+    lateinit var mAdView : AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,6 +23,14 @@ class MainActivity : AppCompatActivity() {
         val listFragment = ListFragment()
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         replaceFragment(homeFragment)
+
+
+        // 1. 모바일광고 SDK 초기화
+         MobileAds.initialize(this) {}
+        // 2. 광고 띄우기
+         mAdView = findViewById(R.id.adViewBanner)
+         val adRequest = AdRequest.Builder().build()
+         mAdView.loadAd(adRequest)
 
 
 

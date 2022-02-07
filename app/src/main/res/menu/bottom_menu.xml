@@ -7,7 +7,7 @@
 
     <item android:id="@+id/list"
         android:icon="@drawable/ic_baseline_menu_24"
-        android:title="목록"
+        android:title="검색목록"
         />
 
 </menu>
